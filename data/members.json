@@ -1,0 +1,30 @@
+[
+  {
+    "Name": "Jakub Farník",
+    "Pfp": "/assets/imgs/blank.png",
+    "Roles": "Team leader, Coding, Web and Circuit Design, Telemetry, Document writing, Presentations",
+    "Bio": "",
+    "Socials": {
+      "Linkedin": "linkedin_url"
+     }
+  },
+  {
+    "Name": "Daniel Kozel",
+    "Pfp": "/assets/imgs/blank.png",
+    "Roles": "3D design, Parachute Design, Engineering, Social Media Management, Document writing, Presentations",
+    "Bio": "",
+    "Socials": {
+      "Linkedin": "linkedin_url"
+     }
+  },
+  {
+    "Name": "Marek Jirásek",
+    "Pfp": "/assets/imgs/blank.png",
+    "Roles": "Social media management, managing sponsors",
+    "Bio": "",
+    "Socials": {
+      "Linkedin": "linkedin_url"
+    }
+  }
+
+]

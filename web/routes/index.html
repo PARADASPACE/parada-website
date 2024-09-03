@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/assets/styles/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.6.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet"
+    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <title>PARÁDA</title>
+</head>
+<body>
+
+    <!--PRELOADER-->
+    <div id="preloader">
+
+        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    </div>
+    <!--PRELOADER-->
+    <!-- HOME -->
+    <header>
+        <div class="nav">
+            <a href="/"><h1>PARÁDA</h1></a>
+            <i class="ri-menu-line" onclick="showMenu()" id="burger"></i>
+            <div class="nav__links" id="navlinks">
+                <i class="ri-close-line" onclick="hideMenu()" id="close"></i>
+                <ul>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#members">MEMBERS</a></li>
+                    <li><a href="#footer">SPONSORS</a></li>
+                    <li><a href="/live">LIVE</a></li>
+                </ul>
+                </div>
+        </div>
+        <section>
+            <h1>Cansat</h1>
+            <p>This is the official site of PARÁDA Cansat Team</p>
+            <a href="#about">More</a>
+        </section>
+    </header>
+    <!-- HOME -->
+    <!-- ABOUT-->
+    <section class="about" id="about">
+        <div id="particles-js"></div>
+        <div>
+            <h1>About our team.</h1>
+            <p>We are a team made up of three students from POJFM High School and we are involved in the CanSat space competition. Each of us is good at something else so we divided the work according to what we're good at so we can pack all the skills together.
+                <br><br>The origin of our name comes from a Czech word expressing the positive attitude and great spirit of our team. We immediately thought about joining the competition as soon as we heard about it. We are going into the competition with the desire to gain new experience and win to it :)
+        </div>
+    </section>
+    <!-- ABOUT-->
+    <!-- MEMBERS-->
+    <section class="members__wrap" id="members">
+        <div class="members">
+        <h1>Members.</h1>
+        <div class="row">
+            {{range .}}
+            <div class="col">
+                <img src={{.Pfp}} id="member_avatar">
+                <h2>{{.Name}}</h2>
+                <p>{{.Roles}}</p>
+                <br>
+                <div class="bioClr">
+                    <p>{{.Bio}}</p>
+                </div>
+            </div>
+            {{end}}
+        </div>
+    </div>
+    </section>
+    <!-- MEMBERS-->
+    <!-- FOOTER-->
+    <footer id="footer">
+        <div class="sponsors">
+            <a href="http://www.elektropenco.cz" target="_blank"><img src="/assets/imgs/penco.png" alt="penco"></a>
+            <a href="https://pojfm.cz" target="_blank"><img src="/assets/imgs/pojka.png" alt="pojfm <3" id="pojec"></a>
+            <a href="https://archive.veluxfoundations.dk/en" target="_blank"><img src="/assets/imgs/velux.png" alt="velux"></a>
+        </div>
+        <h2>Contact</h2>
+
+        <div class="socials">
+            <a href="https://instagram.com/paradaspace" target="_blank"><i class="ri-instagram-line"></i></a>
+            <!-- <a href="https://discord.gg/ZVXyKGw53T" target="_blank"><i class="ri-discord-fill"></i></a> -->
+            <a href="" onclick="iconPopup()"><i class="ri-mail-line"></i></a>
+        </div>
+        <p>Created by Jakub Farnik <script src="/modules/year.js"></script></p>
+    </footer>
+    <!-- FOOTER-->
+    <script type="text/javascript" src="/modules/bar.js"></script>
+    <script src="/modules/particles.js"></script>
+    <script src="/modules/app.js"></script>
+    <script src="/modules/preloader.js"></script>
+
+    <script src="/modules/popup.js"></script>
+</body>
+</html>
