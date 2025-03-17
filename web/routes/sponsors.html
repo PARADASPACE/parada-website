@@ -1,12 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/assets/styles/sponsors.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.6.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet"
+    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <title>Sponsors</title>
-    <link href="" rel="stylesheet">
-  </head>
-  <body>
-  this is where sponsors are supposed to be... 
-  </body>
+</head>
+<body>
+
+    <!--PRELOADER-->
+    <div id="preloader">
+
+        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    </div>
+    <!--PRELOADER-->
+    <!-- HEADER -->
+    <header>
+        <div class="nav">
+            <a href="/"><h1>PARÁDA</h1></a>
+            <i class="ri-menu-line" onclick="showMenu()" id="burger"></i>
+            <div class="nav__links" id="navlinks">
+                <i class="ri-close-line" onclick="hideMenu()" id="close"></i>
+                <ul>
+                    <li><a href="/#about">ABOUT</a></li>
+                    <li><a href="/#members">MEMBERS</a></li>
+                    <li><a href="/sponsors" id="active">SPONSORS</a></li>
+                    <li><a href="/live">LIVE</a></li>
+                </ul>
+                </div>
+        </div>
+        <section>
+            <h1>Sponsors</h1>
+        </section>
+    </header>
+    <!-- HEADER -->
+    <!-- SPONSORS -->
+    <div class="sponsors__container">
+	<div class="sponsor">
+		<img src="/assets/imgs/blank.png" alt="sponzor nenalezer">
+	</div>
+	<div class="sponsor">
+		<img src="/assets/imgs/blank.png" alt="sponzor nenalezer">
+	</div>
+	<div class="sponsor">
+		<img src="/assets/imgs/blank.png" alt="sponzor nenalezer">
+	</div>
+    </div>
+    <!-- SPONSORS -->
+
+    <!-- FOOTER-->
+    <footer id="footer">
+        <h2>Contact</h2>
+
+        <div class="socials">
+            <a href="https://www.instagram.com/paradaspace?igsh=MTF5N2FncXp5ZzJiaw%3D%3D&utm_source=qr" target="_blank"><i class="ri-instagram-line"></i></a>
+            <!-- <a href="https://discord.gg/ZVXyKGw53T" target="_blank"><i class="ri-discord-fill"></i></a> -->
+            <a href="" onclick="iconPopup()"><i class="ri-mail-line"></i></a>
+        </div>
+        <p>Designed by Jakub Farnik <script src="/modules/year.js"></script></p>
+    </footer>
+    <!-- FOOTER-->
+    <script type="text/javascript" src="/modules/bar.js"></script>
+    <script src="/modules/particles.js"></script>
+    <script src="/modules/app.js"></script>
+    <script src="/modules/preloader.js"></script>
+
+    <script src="/modules/popup.js"></script>
+</body>
 </html>
