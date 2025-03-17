@@ -52,8 +52,17 @@ func livePreviewHandler(w http.ResponseWriter, r *http.Request) {
 
 	err := live.Execute(w, nil)
 	if err != nil {
-		log.Fatal("error executing the index template: ", err)
+		log.Fatal("error executing the live template: ", err)
 	}
+}
+func sponsorsHandler(w http.ResponseWriter, r *http.Request){
+  sponsorsPath := "web/routes/sponsors.html"
+  sponsors := template.Must(template.ParseFiles(sponsorsPath))
+
+  err := sponsors.Execute(w, nil)
+  if err != nil{
+    log.Fatal("error executing the sponsors template: ", err)
+  }
 }
 func notFound(w http.ResponseWriter, r *http.Request) {
 	notFoundPath := "web/routes/404.html"
@@ -77,6 +86,7 @@ func main() {
 	r.PathPrefix("/modules/").Handler(http.StripPrefix("/modules/", http.FileServer(http.Dir("web/modules"))))
 	r.HandleFunc("/", rootHandler)
 	r.HandleFunc("/live", livePreviewHandler)
+	r.HandleFunc("/sponsors", sponsorsHandler)
 	r.NotFoundHandler = http.HandlerFunc(notFound)
 	server := &http.Server{
 		Handler: r,
