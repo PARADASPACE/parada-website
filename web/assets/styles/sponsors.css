@@ -71,7 +71,7 @@ header{
 }
 
 #active{
-        color: rgb(181, 14, 181);
+        color: #bebcff;
 }
 
 header section{
@@ -251,4 +251,17 @@ footer h2{
   }
 }
 
-
+.sponsors__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    justify-items: center;
+    align-items: center;
+}
+.sponsor{
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+    width: 50%;
+}
+.sponsor img{
+    width: 100%;
+}

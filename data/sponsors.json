@@ -1,0 +1,20 @@
+[
+  {
+    "Company": "PojFM",
+    "Logo": "/assets/imgs/pojfm_logo.png",
+    "Link": "pojfm.cz",
+    "Invert": 0
+  },
+  {
+    "Company": "Drátek",
+    "Logo": "/assets/imgs/dratek_logo.png",
+    "Link": "dratek.cz",
+    "Invert": 0
+  },
+  {
+    "Company": "Prusa Research",
+    "Logo": "/assets/imgs/prusa_logo.svg",
+    "Link": "prusa3d.com",
+    "Invert": 1
+  }
+]

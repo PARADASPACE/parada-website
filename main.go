@@ -20,6 +20,12 @@ type member struct {
 	Bio   string
 	socials
 }
+type sponsor struct{
+	Company string
+	Logo string
+	Link string
+	Invert int	
+}
 type socials struct {
 	Linkedin string
 }
@@ -35,6 +41,19 @@ func loadMembers() []member {
 		log.Fatal("func error json.Unmarshal(_members,&members): ", err)
 	}
 	return members
+}
+func loadSponsors() []sponsor{
+	_sponsors, err := os.ReadFile("data/sponsors.json")
+	if err != nil{
+		log.Fatal("error trying to read sponsors.json: ", err)
+	}
+	var sponsors []sponsor
+	err = json.Unmarshal(_sponsors, &sponsors)
+	if err != nil{
+		log.Fatal("func error json.Unmarshal(_sponsors, &sponsors): ", err)
+	}	
+	log.Printf("DEBUG: Loaded sponsors: %+v", sponsors)
+	return sponsors
 }
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
@@ -59,7 +78,7 @@ func sponsorsHandler(w http.ResponseWriter, r *http.Request){
   sponsorsPath := "web/routes/sponsors.html"
   sponsors := template.Must(template.ParseFiles(sponsorsPath))
 
-  err := sponsors.Execute(w, nil)
+  err := sponsors.Execute(w, loadSponsors())
   if err != nil{
     log.Fatal("error executing the sponsors template: ", err)
   }

@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.6.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet"
     href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="/assets/styles/transitions.css">
     <title>Sponsors</title>
 </head>
 <body>
@@ -42,15 +43,13 @@
     <!-- HEADER -->
     <!-- SPONSORS -->
     <div class="sponsors__container">
-	<div class="sponsor">
-		<img src="/assets/imgs/blank.png" alt="sponzor nenalezer">
-	</div>
-	<div class="sponsor">
-		<img src="/assets/imgs/blank.png" alt="sponzor nenalezer">
-	</div>
-	<div class="sponsor">
-		<img src="/assets/imgs/blank.png" alt="sponzor nenalezer">
-	</div>
+        {{range .}}
+            <div class="sponsor">
+                <a href="https://www.{{.Link}}" target="_blank">
+                    <img src="{{.Logo}}" {{if eq .Invert 1}}style="filter: invert(1);" {{end}} alt="{{.Company}} logo not found">
+                </a>
+            </div>
+        {{end}}
     </div>
     <!-- SPONSORS -->
 
