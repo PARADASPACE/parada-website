@@ -18,13 +18,21 @@
      }
   },
   {
-    "Name": "Daniel Kozel",
-    "Pfp": "/assets/imgs/kozlisPfp.jpg",
-    "Roles": "Rocket designer",
-    "Bio": "",
-    "Socials": {
-      "Linkedin": "linkedin_url"
+    "name": "Daniel Kozel",
+    "pfp": "/assets/imgs/kozlisPfp.jpg",
+    "roles": "Rocket designer", 
+    "bio": "",
+    "socials": {
+      "linkedin": "linkedin_url"
      }
+  },
+  {
+    "name": "Sabina Halamičková",
+    "pfp": "/assets/imgs/sabcaPfp.png",
+    "roles": "Parachute designer",
+    "bio": "",
+    "socials": {
+      "linkedin": "linkedin_url"
+    }
   }
-
 ]

@@ -11,6 +11,7 @@
     <link rel="stylesheet"
     href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="/assets/styles/transitions.css">
+    <link rel="stylesheet" href="/assets/styles/cookie.css">
     <title>Sponsors</title>
 </head>
 <body>
@@ -21,6 +22,14 @@
         <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
     </div>
     <!--PRELOADER-->
+    <!-- Cookies accept form -->
+    <div id="cookie-consent" class="cookie-consent">
+      <p>We use cookies to improve your experience. By using our website, you agree to our cookie policy.</p>
+      <button id="accept-btn" class="btn cookies_accept">Accept</button>
+      <button id="decline-btn" class="btn cookies_decline">Decline</button>
+    </div>
+    <!-- Cookies accept form -->
+    <!-- Cookies accept form -->
     <!-- HEADER -->
     <header>
         <div class="nav">
@@ -29,15 +38,16 @@
             <div class="nav__links" id="navlinks">
                 <i class="ri-close-line" onclick="hideMenu()" id="close"></i>
                 <ul>
-                    <li><a href="/#about">ABOUT</a></li>
-                    <li><a href="/#members">MEMBERS</a></li>
-                    <li><a href="/sponsors" id="active">SPONSORS</a></li>
-                    <li><a href="/live">LIVE</a></li>
+                    <li><a href="/#about" class="nav_about">About</a></li>
+                    <li><a href="/#members" class="nav_members">MEMBERS</a></li>
+                    <li><a href="/sponsors" class="nav_sponsors">SPONSORS</a></li>
+                    <li><a href="/live" class="nav_live">LIVE</a></li>
+                    <li><a id="language-btn" style="cursor:pointer;"></a></li>
                 </ul>
                 </div>
         </div>
         <section>
-            <h1>Sponsors</h1>
+            <h1 class="header_sponsors">Sponsors</h1>
         </section>
     </header>
     <!-- HEADER -->
@@ -66,10 +76,8 @@
     </footer>
     <!-- FOOTER-->
     <script type="text/javascript" src="/modules/bar.js"></script>
-    <script src="/modules/particles.js"></script>
-    <script src="/modules/app.js"></script>
-    <script src="/modules/preloader.js"></script>
-
-    <script src="/modules/popup.js"></script>
+    <script type="text/javascript" src="/modules/languages.js"></script>
+    <script type="text/javascript" src="/modules/preloader.js"></script>
+    <script type="text/javascript" src="/modules/popup.js"></script>
 </body>
 </html>

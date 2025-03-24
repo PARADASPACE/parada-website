@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -19,6 +19,8 @@
       href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
     >
     <link rel="stylesheet" href="/assets/styles/transitions.css">
+
+    <link rel="stylesheet" href="/assets/styles/cookie.css">
     <title>PARÁDA</title>
   </head>
   <body>
@@ -32,6 +34,13 @@
       </div>
     </div>
     <!--PRELOADER-->
+    <!-- Cookies accept form -->
+    <div id="cookie-consent" class="cookie-consent">
+      <p>We use cookies to improve your experience. By using our website, you agree to our cookie policy.</p>
+      <button id="accept-btn" class="btn cookies_accept">Accept</button>
+      <button id="decline-btn" class="btn cookies_decline">Decline</button>
+    </div>
+    <!-- Cookies accept form -->
     <!-- HOME -->
     <header>
       <div class="nav">
@@ -40,17 +49,18 @@
         <div class="nav__links" id="navlinks">
           <i class="ri-close-line" onclick="hideMenu()" id="close"></i>
           <ul>
-            <li><a href="#about">ABOUT</a></li>
-            <li><a href="#members">MEMBERS</a></li>
-            <li><a href="/sponsors">SPONSORS</a></li>
-            <li><a href="/live">LIVE</a></li>
+            <li><a href="#about" class="nav_about">About</a></li>
+            <li><a href="#members" class="nav_members">MEMBERS</a></li>
+            <li><a href="/sponsors" class="nav_sponsors">SPONSORS</a></li>
+            <li><a href="/live" class="nav_live">LIVE</a></li>
+            <li><a id="language-btn" style="cursor:pointer;"></a></li>
           </ul>
         </div>
       </div>
       <section>
         <h1>ParadaSpace</h1>
-        <p>This is the official site of the ParadaSpace team</p>
-        <a href="#about">More</a>
+        <p class="header_paragraph">This is the official site of the ParadaSpace team</p>
+        <a href="#about" class="header_more">More</a>
       </section>
     </header>
     <!-- HOME -->
@@ -58,15 +68,18 @@
     <section class="about" id="about">
       <div id="particles-js"></div>
       <div>
-        <h1>About our team.</h1>
+        <h1 class="about_header">About our team.</h1>
         <p>
+          <span class="about_paragraph">
           We are a team made up of students from POJFM High School interested in
           technology. Each of us is good at something else so we divided the
           work according to what we're good at so we can pack all the skills
-          together. <br><br>
+            together.</span> <br><br>
+          <span class="about_name_origin">
           The origin of our name comes from a Czech word expressing the positive
           attitude and great spirit of our team. We are ready to accepts
           challenges and overcome problems to reach our goals.
+          </span>
         </p>
       </div>
     </section>
@@ -74,7 +87,7 @@
     <!-- MEMBERS-->
     <section class="members__wrap" id="members">
       <div class="members">
-        <h1>Members.</h1>
+        <h1 class="members_header">Members.</h1>
         <div class="row">
           {{range .}}
           <div class="col">
@@ -100,7 +113,7 @@
             <a href="https://archive.veluxfoundations.dk/en" target="_blank"><img src="/assets/imgs/velux.png" alt="velux"></a>
         </div>
 -->
-      <h2>Contact</h2>
+      <h2 class="contact">Contact</h2>
       <div class="socials">
         <a
           href="https://www.instagram.com/paradaspace?igsh=MTF5N2FncXp5ZzJiaw%3D%3D&utm_source=qr"
@@ -111,11 +124,12 @@
         <a href="" onclick="iconPopup()"><i class="ri-mail-line"></i></a>
       </div>
       <p>
-        Designed by Jakub Farnik
+        <span class="footer">Designed by Jakub Farnik</span>
         <script src="/modules/year.js"></script>
       </p>
     </footer>
     <!-- FOOTER-->
+    <script type="text/javascript" src="/modules/languages.js"></script>
     <script type="text/javascript" src="/modules/bar.js"></script>
     <script src="/modules/particles.js"></script>
     <script src="/modules/app.js"></script>

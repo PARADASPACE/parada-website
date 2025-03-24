@@ -1,0 +1,50 @@
+[
+{
+  "nav_about": "O nás",
+  "nav_members": "Členové",
+  "nav_sponsors": "Sponzoři",
+  "nav_live": "Živý web",
+  
+  "header_paragraph": "Toto je oficiální stránka týmu ParádaSpace 🚀",
+  "header_more": "Více",
+  "header_sponsors": "Sponzoři",
+
+  "about_header": "O našem týmu.",
+  "about_paragraph": "Jsme tým složený ze studentů střední školy POJFM, kteří se zajímají o technologie. Každý z nás vyniká v něčem jiném a blablablablabla",
+  "about_name_origin":"Původ našeho jména je jednoduchý. Hledali jsme pozitivní slovo, které by krásně popsalo náš přístup k výzvám, díky tomuto přístupu tak vytváříme tento parádní tým.",
+
+  "members_header": "Členové.",
+  "contact": "Kontakt",
+  "footer": "Vytvořil Jakub Farník",
+
+  "cookies_consent": "Použiváním souborů cookies si ulehčujete svou práci. Používáním našeho webu souhlasíte s politikou používání cookies.",
+  "cookies_accept": "Souhlasím",
+  "cookies_decline": "Nesouhlasím"
+},
+{
+  "nav_about": "About",
+  "nav_members": "Members",
+  "nav_sponsors": "Sponsors",
+  "nav_live": "Live",
+  
+  "header_paragraph": "This is the official site of the ParadaSpace team 🚀",
+  "header_more": "More",
+  "header_sponsors": "Sponsors",
+
+
+  "about_header": "About our team.",
+  "about_paragraph": "We are a team made up of students from POJFM High School interested in technology. Each of us is good at something else so we divided the work according to what we're good at so we can pack all the skills together.",
+  "about_name_origin":"The origin of our name comes from a Czech word expressing the positive attitude and great spirit of our team. We are ready to accept challenges and overcome problems to reach our goals.",
+
+
+  "members_header": "Members.",
+  "contact": "Contact",
+  "footer": "Designed by Jakub Farník",
+
+  
+  "cookies_consent": "We use cookies to improve your experience. By using our website, you agree to our cookie policy.",
+  "cookies_accept": "Accept",
+  "cookies_decline": "Decline"
+  
+}
+]

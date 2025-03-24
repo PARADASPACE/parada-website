@@ -20,15 +20,31 @@ type member struct {
 	Bio   string
 	socials
 }
+type socials struct {
+	Linkedin string
+}
 type sponsor struct{
 	Company string
 	Logo string
 	Link string
 	Invert int	
 }
-type socials struct {
-	Linkedin string
+type language struct {
+    NavAbout          string 
+    NavMembers        string
+    NavSponsors       string 
+    NavLive           string 
+
+    HeaderParagraph   string 
+    About             string
+    AboutParagraph    string
+    AboutNameOrigin   string
+
+    Members           string
+    Contakt           string
+    Footer            string
 }
+
 
 func loadMembers() []member {
 	_members, err := os.ReadFile("data/members.json")
@@ -52,9 +68,21 @@ func loadSponsors() []sponsor{
 	if err != nil{
 		log.Fatal("func error json.Unmarshal(_sponsors, &sponsors): ", err)
 	}	
-	log.Printf("DEBUG: Loaded sponsors: %+v", sponsors)
 	return sponsors
 }
+func loadLanguage() []language{
+	_language, err := os.ReadFile("data/language.json")
+	if err != nil {
+		log.Fatal("error trying to read languages.json")
+	}
+	var languages []language
+	err = json.Unmarshal(_language, &languages)
+	if err != nil{
+		log.Fatal("func error json.Unmarshal(_language, &language)", err)
+	}
+	return languages
+}
+
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
 	indexPath := "web/routes/index.html"
