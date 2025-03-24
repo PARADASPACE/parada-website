@@ -1,5 +1,5 @@
 .cookie-consent {
-    display:none;
+    display:flex;
     position: fixed;
     bottom: 10px;
     z-index:1;
