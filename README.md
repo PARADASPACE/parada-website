@@ -28,5 +28,3 @@ For any questions or further information, feel free to contact us through the so
 
 Thank you for visiting our project. We hope you find it informative and inspiring!
 
-## Keep in mind
-This README was created with the assistance of ChatGPT, an AI developed by OpenAI. The result has been reviewed and we agree with everything that has been said. This README is the only thing created by artificial intelligence in this project. Everything else was designed, written and tested by a member of the team. ✌️
