@@ -1,33 +1,39 @@
+var cookieForm = document.getElementById("cookie-consent");
+if(cookieConsent() === 1){
+  cookieForm.style.display = "none";
+}
 var userLang = navigator.language || navigator.userLanguage; 
-//console.log(userLang);
 var flag = document.getElementById("language-btn");
 var acceptBtn = document.getElementById("accept-btn");
 var declineBtn = document.getElementById("decline-btn");
-var tempLang = "english";
-if (document.cookie == "" && cookieConsent == "yes") {
-  if (userLang == "cs-CZ") {
-    document.cookie = "language=czech;";
-  } else {
-    document.cookie = "language=english;";
-  }
+var tempLang = getCookie("language") || (userLang === "cs-CZ" ? "czech" : "english");
+
+if (cookieConsent() === 1 && getCookie("language") === "") {
+  document.cookie = `language=${tempLang};`;
 }
-displayLanguage();
+
 
 flag.addEventListener('click', () => changeLanguage());
 acceptBtn.addEventListener('click', function(){
   document.cookie = "cookie-consent=yes;";
+  document.cookie = `language=${tempLang};`;
+  cookieForm.style.display = "none";
+  displayLanguage();
 });
 declineBtn.addEventListener('click', function(){
-  document.cookie = "cookie-consent=no;";
+  document.cookie = "cookie-consent=no; path=/; expires=Mon, 19 Feb 1979 00:00:00 UTC;";
+  document.cookie = "language=; path=/; expires=Fri, 30 Mar 1979 00:00:00 UTC;";
+  cookieForm.style.display = "none";
+  displayLanguage();
 });
 //console.log(document.cookie);
 //console.log("consent: " + cookieConsent());
-
+displayLanguage();
 async function displayLanguage() {
     const data = await fetchData();
-    const lang = cookieConsent() == "yes" ? getCookie() : tempLang;
-    console.log(cookieConsent());
-    console.log(lang);
+    const lang = cookieConsent() === "1" ? getCookie() : tempLang;
+    console.log("Cookie consent: " + cookieConsent());
+    console.log("Language: " + lang);
     var obj = data[lang === "czech" ? 0 : 1];
     for(var key in obj){
       var value = obj[key];
@@ -42,17 +48,19 @@ async function displayLanguage() {
 }
 
 async function changeLanguage() {
-    const currentLang = cookieConsent() == "yes" ? getCookie() : tempLang;
-    console.log("curr lang: " + currentLang);
-    if(cookieConsent()){
-      document.cookie = `language=${currentLang === "czech" ? "english" : "czech"}; path=/`;
+    const currentLang = cookieConsent() === 1 ? getCookie("language") : tempLang;
+    const newLang = currentLang === "czech" ? "english" : "czech";
+
+    if(cookieConsent()===1){
+      document.cookie = `language=${newLang};`;
     }
-    tempLang = currentLang == "czech" ? "english" : "czech";
+    tempLang = newLang; 
   
     displayLanguage();
 }
 
-function getCookie(cookieName = "language") {
+
+function getCookie(cookieName) {
   let name = cookieName + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
   let val = decodedCookie.split(';');
@@ -69,6 +77,8 @@ function getCookie(cookieName = "language") {
   return "";
 }
 
+
+
 async function fetchData() {
   try {
     const response = await fetch("/modules/languages.json")
@@ -83,8 +93,5 @@ async function fetchData() {
 }
 
 function cookieConsent(){
-  if(getCookie('cookie-consent') == "yes"){
-    return 1;
-  }
-  return -1;
+  return getCookie('cookie-consent') == "yes" ? 1 : -1;
 }
