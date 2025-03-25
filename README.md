@@ -1,32 +1,30 @@
-# PARÁDA Cansat Team Website
+# PARÁDA Cansat Team Website 🚀
 
-Welcome to the GitHub repository for the PARÁDA Cansat Team's official website. This project is a dynamic web platform designed to showcase our team, our projects, and provide live updates. Built with Go, leveraging the `gorilla/mux` router, and a sprinkle of HTML, CSS, and JavaScript, this site is a testament to our team's skills and dedication.
+Welcome to the GitHub repository for the PARÁDA Team's official website. This project includes a dynamic website designed to showcase and inform you about
+our team, projects, and to provide you with live updates during our missions. Built with Go, utilizing the `gorilla/mux` router, and a front-end design made in HTML, CSS, and JavaScript, this site is just a sample of the things we can do.
 ### Highlights
 
-- **Fonts and Images**: Located under `web/assets`, providing a cohesive look and feel.
+- **Website structure**: The whole website is structured and sorted thanks to Go's data parsing.
 - **Members Data**: JSON formatted data about team members at `web/data/members.json`.
+- **Responsive sponsors fetching**: 
 - **Styles**: CSS files for styling the web pages, located in `web/assets/styles`.
 - **JavaScript Modules**: Functional scripts enhancing interactivity, found in `web/modules`.
 - **Web Pages**: HTML files for the site's content, located within `web/routes`.
-
+- **This site is an experiment**: Many things this site offers are useless, reason why we decided to use them was to learn new things and educate ourselves.
 ## Technologies Used
 
-- **Go**: Backend server and routing logic.
+- **Go**: Backend server, routing logic and data fetching.
 - **gorilla/mux**: For efficient URL routing.
-- **HTML/CSS/JavaScript**: For the front-end presentation and interactivity.
-- **JSON**: For storing and loading team member data.
-
-## Contributing
-
-We welcome contributions! Whether it's fixing bugs, adding new features, or improving documentation, please feel free to make changes and submit a pull request.
+- **HTML/CSS/JavaScript**: For the front-end presentation, interactivity and language change.
+- **JSON**: For storing and loading data in real time.
 
 ## License
 
-This project is open-source and available under the [MIT License](LICENSE).
+This project is open-source and available under the [MIT License](LICENSE). It's purpose is to educate and win.
 
 ## Contact
 
-For any queries or further information, feel free to contact us through the social media links provided in the footer of the website.
+For any questions or further information, feel free to contact us through the social media links provided in the footer of the website.
 
 Thank you for visiting our project. We hope you find it informative and inspiring!
 
