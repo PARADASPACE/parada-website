@@ -111,6 +111,7 @@ func sponsorsHandler(w http.ResponseWriter, r *http.Request){
     log.Fatal("error executing the sponsors template: ", err)
   }
 }
+
 func notFound(w http.ResponseWriter, r *http.Request) {
 	notFoundPath := "web/routes/404.html"
 	notFound := template.Must(template.ParseFiles(notFoundPath))

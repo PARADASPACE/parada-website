@@ -16,5 +16,12 @@
     "Logo": "/assets/imgs/prusa_logo.svg",
     "Link": "prusa3d.com",
     "Invert": 1
+  },
+  {
+    "Company": "Ollies",
+    "Logo": "/assets/imgs/ollies_logo.svg",
+    "Link": "ollies.cz",
+    "Invert":0
   }
+  
 ]
