@@ -22,6 +22,12 @@
     "Logo": "/assets/imgs/ollies_logo.svg",
     "Link": "ollies.cz",
     "Invert":0
+  },
+  {
+    "Company": "Brebeck Composite",
+    "Logo": "/assets/imgs/brebeck_logo.svg",
+    "Link": "brebeckcomposite.com",
+    "Invert":0
   }
   
 ]
