@@ -17,7 +17,7 @@
   "contact": "Kontakt",
   "footer": "Vytvořil Jakub Farník",
 
-  "cookies_consent": "Použiváním souborů cookies si ulehčujete svou práci. Používáním našeho webu souhlasíte s politikou používání cookies.",
+  "cookies_consent_text": "Použiváním souborů cookies si ulehčujete svou práci. Používáním našeho webu souhlasíte s politikou používání cookies.",
   "cookies_accept": "Souhlasím",
   "cookies_decline": "Nesouhlasím"
 },
@@ -42,7 +42,7 @@
   "footer": "Designed by Jakub Farník",
 
   
-  "cookies_consent": "We use cookies to improve your experience. By using our website, you agree to our cookie policy.",
+  "cookies_consent_text": "We use cookies to improve your experience. By using our website, you agree to our cookie policy.",
   "cookies_accept": "Accept",
   "cookies_decline": "Decline"
   
