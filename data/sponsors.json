@@ -28,6 +28,12 @@
     "Logo": "/assets/imgs/brebeck_logo.svg",
     "Link": "brebeckcomposite.com",
     "Invert":0
+  },
+  {
+    "Company": "LiveZone",
+    "Logo": "/assets/imgs/livezone_logo.svg",
+    "Link": "livezone.cz",
+    "Invert":0
   }
   
 ]
