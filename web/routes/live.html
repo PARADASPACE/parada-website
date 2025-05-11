@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -49,8 +49,7 @@
         </div>
     </div>
 </body>
-</html>
-<!--
+</html>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,22 +59,56 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet"
-    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="/assets/styles/transitions.css">
-    <title>Paráda info</title>
+    <title>Paráda live</title>
 </head>
 <body>
     <div class="main__container">
         <header>
-            <h1><span>PARADA</span> Real-time</h1>
+            <h1><span>PARADA</span> live</h1>
         </header>
-        <div id="progress">
-            <div id="bar">
-
-            </div>
+        <div class="blabla">
+            <canvas id="myChart"></canvas>
         </div>
+
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const chart = new Chart(document.getElementById('myChart'), {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Temperature',
+                    data: [],
+                    borderColor: 'rgba(75,192,192,1)',
+                    borderWidth: 2,
+                }]
+            },
+            options: {
+                scales: {
+                    x: { title: { display: true, text: 'Time' } },
+                    y: { title: { display: true, text: 'Value' } }
+                }
+            }
+        });
+        function fetchDataAndUpdateChart() {
+            fetch('/api/data/temperature')
+                .then(res => res.json())
+                .then(data => {
+                    // Reverse so oldest to newest
+                    data.reverse();
+
+                    const labels = data.map(item => item.timestamp);
+                    const values = data.map(item => item.value);
+
+                    chart.data.labels = labels;
+                    chart.data.datasets[0].data = values;
+                    chart.update();
+                });
+        }
+
+        setInterval(fetchDataAndUpdateChart, 3000); // update every 3 seconds
+
+</script>
 </body>
 </html>
--->
