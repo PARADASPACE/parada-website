@@ -30,7 +30,9 @@ a{
     color: rgb(75,192,192);
 }
 
-.blabla{
-    width:60%;
+.charts{
+    width:80%;
     margin:auto;
+    display: grid;
 }
+
