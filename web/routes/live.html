@@ -1,189 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/styles/live.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>Paráda live</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paráda live</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Oswald', sans-serif;
+    }
+
+    body {
+      background-color: #FEFFFE;
+      color: #1E201;
+      overflow-x: hidden;
+    }
+
+    nav {
+      text-align: center;
+      padding: 1rem;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #444;
+    }
+
+    header h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin: 2rem 0 1rem;
+    }
+
+    header h1 span {
+      color: rgb(75,192,192);
+    }
+
+    .nav-buttons {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .nav-buttons button {
+      background-color: rgb(75,192,192);
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .nav-buttons button:hover {
+      background-color: #5ed2d2;
+    }
+
+    .charts-wrapper {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .charts {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 300%;
+    }
+
+    .chart-container {
+      width: 100vw;
+      padding: 1rem;
+      flex-shrink: 0;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: auto !important;
+    }
+
+    #map-container {
+      margin: 2rem auto;
+      width: 90%;
+      max-width: 1000px;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background: white;
+    }
+
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+
+    .gps-info {
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.2rem;
+      font-weight: 400;
+      background-color: #f2f2f2;
+      border-top: 1px solid #ddd;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      .gps-info {
+        font-size: 1rem;
+      }
+
+      .charts {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .chart-container {
+        width: 100% !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="main__container">
-        <nav>
-            <a href="#temperature_chart">temp</a>
-            <a href="#pressure_chart">pressure</a>
-            <a href="#humidity_chart">humidity</a>
-        </nav>
-        <header>
-            <h1><span>PARADA</span> live</h1>
-        </header>
-        <div class="charts">
-            <canvas id="temperature_chart"></canvas>
-            <canvas id="pressure_chart"></canvas>
-            <canvas id="humidity_chart"></canvas>
-        </div>
-        <div id="map" style="height: 400px;"></div>
+  <div class="main__container">
+    <nav>
+      <a href="#temperature_chart">Temp</a>
+      <a href="#pressure_chart">Pressure</a>
+      <a href="#humidity_chart">Humidity</a>
+    </nav>
 
-        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <header>
+      <h1><span>PARADA</span> live</h1>
+    </header>
 
-        <script>
-            var map = L.map('map').setView([49.8397, 18.2921], 13); // lat, lon, zoom
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-
-            L.marker([49.8397, 18.2921]).addTo(map)
-                .bindPopup('PRADA')
-                .openPopup();
-        </script>
-
+    <div class="nav-buttons">
+      <button onclick="prevChart()">&#8592; Prev</button>
+      <button onclick="nextChart()">Next &#8594;</button>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        const temperatureChart = new Chart(document.getElementById('temperature_chart'), {
-            type: 'line',
-            data: {
-                labels: [],
-                datasets: [ {
-                    label: '°C',
-                    data: [],
-                    borderColor: 'rgba(75,192,192,1)',
-                    borderWidth: 2,
-                } ]
-            },
-            options: {
-                scales: {
-                    x: { title: { display: true, text: 'Time' } },
-                    y: { title: { display: true, text: 'Value' } }
-                },
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Temperature',
-                        font: {
-                            size: 24,        
-                            weight: 'bold'  
-                        },
-                        color: '#333',     
-                        padding: {
-                            top: 20,
-                            bottom: 20
-                        }
-                    }
-                }
-            }
-        });
-        const pressureChart= new Chart(document.getElementById('pressure_chart'), {
-            type: 'line',
-            data: {
-                labels: [],
-                datasets: [ {
-                    label: 'Pa',
-                    data: [],
-                    borderColor: 'rgba(219, 83, 117)',
-                    borderWidth: 2,
-                } ]
-            },
-            options: {
-                scales: {
-                    x: { title: { display: true, text: 'Time' } },
-                    y: { title: { display: true, text: 'Value' } }
-                },
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Pressure',
-                        font: {
-                            size: 24,        
-                            weight: 'bold'  
-                        },
-                        color: '#333',     
-                        padding: {
-                            top: 20,
-                            bottom: 20
-                        }
-                    }
-                }
-            }
-        });
-        const humidityChart = new Chart(document.getElementById('humidity_chart'), {
-            type: 'line',
-            data: {
-                labels: [],
-                datasets: [ {
-                    label: '%',
-                    data: [],
-                    borderColor: 'rgba(135, 255, 101)',
-                    borderWidth: 2,
-                } ]
-            },
-            options: {
-                scales: {
-                    x: { title: { display: true, text: 'Time' } },
-                    y: { title: { display: true, text: 'Value' } }
-                },
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Humidity',
-                        font: {
-                            size: 24,        
-                            weight: 'bold'  
-                        },
-                        color: '#333',     
-                        padding: {
-                            top: 20,
-                            bottom: 20
-                        }
-                    }
-                }
-            }
-        });
-        function fetchDataAndUpdateChart() {
-            fetch('/api/data/temperature')
-                .then(res => res.json())
-                .then(data => {
-                    // Reverse so oldest to newest
-                    data.reverse();
 
-                    const labels = data.map(item => item.timestamp);
-                    const values = data.map(item => item.value);
+    <div class="charts-wrapper">
+      <div class="charts" id="charts-carousel">
+        <div class="chart-container"><canvas id="temperature_chart"></canvas></div>
+        <div class="chart-container"><canvas id="pressure_chart"></canvas></div>
+        <div class="chart-container"><canvas id="humidity_chart"></canvas></div>
+      </div>
+    </div>
 
-                    temperatureChart.data.labels = labels;
-                    temperatureChart.data.datasets[0].data = values;
-                    temperatureChart.update();
-                });
-            fetch('/api/data/pressure')
-                .then(res => res.json())
-                .then(data => {
-                    // Reverse so oldest to newest
-                    data.reverse();
+    <div id="map-container">
+      <div id="map"></div>
+      <div class="gps-info">Current location: 49.8397, 18.2921 (Frýdek-Místek)</div>
+    </div>
+  </div>
 
-                    const labels = data.map(item => item.timestamp);
-                    const values = data.map(item => item.value);
-
-                    pressureChart.data.labels = labels;
-                    pressureChart.data.datasets[0].data = values;
-                    pressureChart.update();
-                });
-            fetch('/api/data/humidity')
-                .then(res => res.json())
-                .then(data => {
-                    // Reverse so oldest to newest
-                    data.reverse();
-
-                    const labels = data.map(item => item.timestamp);
-                    const values = data.map(item => item.value);
-
-                    humidityChart.data.labels = labels;
-                    humidityChart.data.datasets[0].data = values;
-                    humidityChart.update();
-                });
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    let currentChart = 0;
+    function updateCarousel() {
+      const carousel = document.getElementById('charts-carousel');
+      const isMobile = window.innerWidth <= 768;
+        if(!isMobile){
+        carousel.style.transform = `translateX(-${currentChart * 100}vw)`;
         }
-        setInterval(fetchDataAndUpdateChart, 3000);
+    }
 
-</script>
+    function nextChart() {
+      currentChart = (currentChart + 1) % 3;
+      updateCarousel();
+    }
+
+    function prevChart() {
+      currentChart = (currentChart - 1 + 3) % 3;
+      updateCarousel();
+    }
+
+    const map = L.map('map').setView([49.8397, 18.2921], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    L.marker([49.8397, 18.2921]).addTo(map)
+      .bindPopup('PARADA HQ')
+      .openPopup();
+
+    const temperatureChart = new Chart(document.getElementById('temperature_chart'), {
+      type: 'line',
+      data: { labels: [], datasets: [{ label: '°C', data: [], borderColor: 'rgba(75,192,192,1)', borderWidth: 2 }] },
+      options: { scales: { x: { title: { display: true, text: 'Time' } }, y: { title: { display: true, text: 'Value' } } },
+        plugins: { title: { display: true, text: 'Temperature', font: { size: 24, weight: 'bold' }, padding: { top: 20, bottom: 20 } } }
+      }
+    });
+    const pressureChart = new Chart(document.getElementById('pressure_chart'), {
+      type: 'line',
+      data: { labels: [], datasets: [{ label: 'Pa', data: [], borderColor: 'rgba(219,83,117)', borderWidth: 2 }] },
+      options: { scales: { x: { title: { display: true, text: 'Time' } }, y: { title: { display: true, text: 'Value' } } },
+        plugins: { title: { display: true, text: 'Pressure', font: { size: 24, weight: 'bold' }, padding: { top: 20, bottom: 20 } } }
+      }
+    });
+    const humidityChart = new Chart(document.getElementById('humidity_chart'), {
+      type: 'line',
+      data: { labels: [], datasets: [{ label: '%', data: [], borderColor: 'rgba(135,255,101)', borderWidth: 2 }] },
+      options: { scales: { x: { title: { display: true, text: 'Time' } }, y: { title: { display: true, text: 'Value' } } },
+        plugins: { title: { display: true, text: 'Humidity', font: { size: 24, weight: 'bold' }, padding: { top: 20, bottom: 20 } } }
+      }
+    });
+
+    function fetchDataAndUpdateChart() {
+      fetch('/api/data/temperature').then(res => res.json()).then(data => {
+        data.reverse();
+        temperatureChart.data.labels = data.map(item => item.timestamp);
+        temperatureChart.data.datasets[0].data = data.map(item => item.value);
+        temperatureChart.update();
+      });
+      fetch('/api/data/pressure').then(res => res.json()).then(data => {
+        data.reverse();
+        pressureChart.data.labels = data.map(item => item.timestamp);
+        pressureChart.data.datasets[0].data = data.map(item => item.value);
+        pressureChart.update();
+      });
+      fetch('/api/data/humidity').then(res => res.json()).then(data => {
+        data.reverse();
+        humidityChart.data.labels = data.map(item => item.timestamp);
+        humidityChart.data.datasets[0].data = data.map(item => item.value);
+        humidityChart.update();
+      });
+    }
+    setInterval(fetchDataAndUpdateChart, 3000);
+  </script>
 </body>
 </html>
+
