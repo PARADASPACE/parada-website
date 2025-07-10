@@ -1,9 +1,9 @@
 module github.com/PARADASPACE/parada-website
 
-go 1.22.1
+go 1.23
 
 require (
-	github.com/go-sql-driver/mysql v1.9.2
+	github.com/go-sql-driver/mysql v1.8.0
 	github.com/gorilla/mux v1.8.1
 )
 

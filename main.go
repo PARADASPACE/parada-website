@@ -233,6 +233,7 @@ func main() {
 	log.SetOutput(logFile)
 	dsn := fmt.Sprintf("wtf:%s@tcp(localhost:3306)/PARADA?parseTime=true", loadDB())
 	db, err = sql.Open("mysql",dsn)
+
 	if err != nil{
 		log.Fatal("error opening the db: ", err)
 	}
